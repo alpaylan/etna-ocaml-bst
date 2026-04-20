@@ -1,0 +1,3 @@
+name = "BST"
+language = "OCaml"
+description = "Binary Search Tree property-based testing workload (OCaml)."
