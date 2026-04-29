@@ -1,6 +1,12 @@
 name = "bst-ocaml"
 language = "OCaml"
 description = "Binary Search Tree property-based testing workload (OCaml)."
+strategies = [
+  "qcheck:bespoke",
+  "qcheck:typebased",
+  "crowbar:bespoke",
+  "crowbar:typebased",
+]
 
 mutations = [
   "insert_1",
