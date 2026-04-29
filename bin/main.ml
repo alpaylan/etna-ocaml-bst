@@ -79,7 +79,7 @@ let main property strategy seed =
   | "crowbar" ->
       (* have to do this because crowbar reads command lines args *)
       Random.self_init ();
-      Sys.argv.(1) <- "--repeat=10000000";
+      Sys.argv.(1) <- Printf.sprintf "--repeat=%d" max_int;
       Sys.argv.(2) <- Printf.sprintf "--seed=%d" (Random.int 1000000);
       Runner_crowbar.run
         (crowbar_property property)
