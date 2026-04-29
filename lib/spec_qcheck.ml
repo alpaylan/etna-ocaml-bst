@@ -30,7 +30,7 @@ let make ~name gen f ~seed =
       elapsed_s;
     }
 
-let int = small_int
+let int = nat_small
 
 (** -- Invariants *)
 
