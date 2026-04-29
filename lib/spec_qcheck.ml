@@ -15,7 +15,7 @@ let make ~name gen f ~seed =
   let start_time = ref 0. in
   let end_time = ref 0. in
   fun () ->
-    ( make_cell ~name ~count:10000000 gen f |> fun c ->
+    ( make_cell ~name ~count:max_int gen f |> fun c ->
       start_time := Unix.gettimeofday ();
       check_cell c ~rand:(Random.State.make [| seed |]) )
     |> fun result ->
