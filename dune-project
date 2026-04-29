@@ -19,7 +19,7 @@
  (name BST)
  (synopsis "A short synopsis")
  (description "A longer description")
- (depends ocaml dune (qcheck (< "0.22")) crowbar cmdliner)
+ (depends ocaml dune qcheck crowbar cmdliner)
  (tags
   (topics "to describe" your project)))
 

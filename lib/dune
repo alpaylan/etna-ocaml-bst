@@ -2,4 +2,5 @@
 
 (library
  (name BST)
+ (flags (:standard -alert -deprecated))
  (libraries qcheck crowbar))

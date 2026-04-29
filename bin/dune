@@ -1,4 +1,5 @@
 (executables
  (public_names bst bst-sampler)
  (names main main_sampler)
+ (flags (:standard -alert -deprecated))
  (libraries BST cmdliner unix qcheck threads))
