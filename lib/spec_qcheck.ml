@@ -15,11 +15,12 @@ let make ~name gen f ~seed =
   let start_time = ref 0. in
   let end_time = ref 0. in
   fun () ->
-    (* QCheck2.make_cell with count = max_int short-circuits to 0
-       iterations (looks like an internal arithmetic overflow); 10^8
-       is well above what a 60s --timeout could cover (≈ 50k
-       tests/sec → 3M tests in a minute) but safely under max_int. *)
-    ( make_cell ~name ~count:100_000_000 gen f |> fun c ->
+    (* QCheck2.make_cell silently runs 0 iterations when
+       count > max_int - 200 — internal `count + 200` overflow inside
+       check_cell. max_int - 200 is the largest safe value (≈4.6×10^18
+       tests on 64-bit), effectively infinite, so etna's wall-clock
+       --timeout governs trial duration instead of a count cap. *)
+    ( make_cell ~name ~count:(max_int - 200) gen f |> fun c ->
       start_time := Unix.gettimeofday ();
       check_cell c ~rand:(Random.State.make [| seed |]) )
     |> fun result ->
